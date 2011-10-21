@@ -6,7 +6,7 @@ public class Franc extends Money{
 		this.amount = i;
 	}
 
-	public Object times(int multiplayer) {
+	public Franc times(int multiplayer) {
 		return new Franc(amount * multiplayer);
 	}
 
