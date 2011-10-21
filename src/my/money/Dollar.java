@@ -1,8 +1,6 @@
 package my.money;
 
-public class Dollar {
-
-	public int amount;
+public class Dollar extends Money{
 
 	public Dollar(int i) {
 		this.amount = i;
@@ -11,5 +9,6 @@ public class Dollar {
 	public Dollar times(int multiplayer) {
 		return new Dollar(amount * multiplayer);
 	}
+	
 
 }
