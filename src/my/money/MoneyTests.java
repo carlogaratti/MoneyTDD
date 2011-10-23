@@ -34,4 +34,5 @@ public class MoneyTests {
 		assertTrue(Money.franc(5).equals(Money.franc(5)));
 		assertFalse(Money.dollar(6).equals(Money.franc(6)));
 	}
+    
 }
