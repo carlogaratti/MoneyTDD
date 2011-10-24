@@ -1,8 +1,8 @@
 package my.money;
 
-public  class Money {
+public  class Money implements Expression {
 	
-	private int amount;
+	protected int amount;
 	private String currency;
 	
 	public Money(int i, String currency) {
@@ -12,7 +12,8 @@ public  class Money {
 	
 	public boolean equals(Object obj) {
 		Money money = (Money)obj;
-		return (amount == money.amount) && (((Money)obj).currency == this.currency);
+		return (amount == money.amount) && 
+		(((Money)obj).currency == this.currency);
 	}
 
 	public static Money dollar(int amount) {
@@ -25,6 +26,16 @@ public  class Money {
 	
 	public  Money times(int multipliers){
 		return new Money(amount * multipliers, this.currency);
+	}
+
+	public Expression plus(Money addend) {
+		return new Sum(this, addend);
+	}
+
+	@Override
+	public Money reduce(Bank bank, String to) {
+		int rate = bank.rate(currency, to);
+		return new Money(amount / rate, to);
 	}
 
 }
